@@ -26,7 +26,7 @@ Then checkout a tagged version of homestead so there are no unintended upgrades 
 ### 5. Generate a Homestead.yaml file
 In the homestead directory (`cd ~/Homestead`) run `bash init.sh`
 
-Next, customize your `Homestead.yaml` file to meet your requirements. Here is a sample `Homestead.yaml` file that I use: https://gist.github.com/klaser/b516d5462be98f034f57b6e33b203544
+Next, customize your `Homestead.yaml` file to meet your requirements. [Here is a sample `Homestead.yaml` file that I use](Homestead.yaml) 
 
 ### 6. Run Vagrant
 In the homestead directory run `vagrant up`. This will boot the virtual machine and provision it. 
@@ -37,10 +37,7 @@ In terminal, edit your hosts file: `sudo nano /etc/hosts` and add this to the en
 Make sure the IP address you type in matches the one in your `Homestead.yaml` file. 
 
 ## Create an Nginx file for Magento 2
-Here is a sample nginx file for Magento 2, assuming you have used the example names above.
-
-https://gist.github.com/klaser/90b8831fbc628ef6ce22d297d9f83ae3
-
+[Here is a sample nginx file for Magento 2](magento2.test), assuming you have used the example names above.
 
 ## Restart nginx
 In terminal, make sure you are connected to your vagrant box: `cd ~/Homestead` and `vagrant ssh`
