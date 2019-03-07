@@ -21,7 +21,7 @@ The first step is to clone the Homestead repository:
 Then checkout a tagged version of homestead so there are no unintended upgrades made.
 
 `cd ~/Homestead`
-`git checkout v8.0.1`
+`git checkout v8.2.0`
 
 ### 5. Generate a Homestead.yaml file
 In the homestead directory (`cd ~/Homestead`) run `bash init.sh`
@@ -38,6 +38,13 @@ Make sure the IP address you type in matches the one in your `Homestead.yaml` fi
 
 ## Create an Nginx file for Magento 2
 [Here is a sample nginx file for Magento 2](magento2.test), assuming you have used the example names above.
+
+## Create an Upstream file
+In your `nginx` directory, there should be a directory named `conf.d`. Any file named `*.conf` will be loaded by nginx. 
+
+Copy the contents of the included `[upstream.conf](upstream.conf)` in this repository to `/etc/nginx/conf.d/upstream.conf`. 
+
+This file defines the various upstream variables for using different versions of PHP. For Magento 2.3, we will use `fastcgi_72` which uses `PHP 7.2`. 
 
 ## Restart nginx
 In terminal, make sure you are connected to your vagrant box: `cd ~/Homestead` and `vagrant ssh`

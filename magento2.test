@@ -1,7 +1,3 @@
-upstream fastcgi_backend {
-   server   unix:/var/run/php/php7.2-fpm.sock;
-}
-
 server {
     listen 80;
     listen 443 ssl;
@@ -15,7 +11,7 @@ server {
     error_log  /var/log/nginx/error.log;
     client_max_body_size 4G;
 
-    set $MAGE_ROOT /home/vagrant/sites/magento2-test/public_html
+    set $MAGE_ROOT /home/vagrant/sites/magento2/public_html;
 
 	# Magento 2 specific area
 
@@ -30,7 +26,7 @@ server {
 	location ~* ^/setup($|/) {
 		root $MAGE_ROOT;
 		location ~ ^/setup/index.php {
-			fastcgi_pass   fastcgi_backend;
+			fastcgi_pass   fastcgi_72;
 
 			fastcgi_param  PHP_FLAG  "session.auto_start=off \n suhosin.session.cryptua=off";
 			fastcgi_param  PHP_VALUE "memory_limit=756M \n max_execution_time=600";
@@ -57,7 +53,7 @@ server {
 
 		location ~ ^/update/index.php {
 			fastcgi_split_path_info ^(/update/index.php)(/.+)$;
-			fastcgi_pass   fastcgi_backend;
+			fastcgi_pass   fastcgi_72;
 			fastcgi_index  index.php;
 			fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
 			fastcgi_param  PATH_INFO        $fastcgi_path_info;
@@ -156,7 +152,7 @@ server {
 	# PHP entry point for main application
 	location ~ (index|get|static|report|404|503|health_check)\.php$ {
 		try_files $uri =404;
-		fastcgi_pass   fastcgi_backend;
+		fastcgi_pass   fastcgi_72;
 		fastcgi_buffers 1024 4k;
 
 		fastcgi_param  PHP_FLAG  "session.auto_start=off \n suhosin.session.cryptua=off";

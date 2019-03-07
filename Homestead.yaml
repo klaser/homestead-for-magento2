@@ -17,7 +17,7 @@ folders:
 
 sites:
 - map: magento2.test
-    to: /home/vagrant/sites/magento2-test/public_html
+    to: /home/vagrant/sites/magento2/public_html
 
 databases:
 - homestead
