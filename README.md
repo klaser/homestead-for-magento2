@@ -42,7 +42,7 @@ Make sure the IP address you type in matches the one in your `Homestead.yaml` fi
 ## Create an Upstream file
 In your `nginx` directory, there should be a directory named `conf.d`. Any file named `*.conf` will be loaded by nginx. 
 
-Copy the contents of the included `[upstream.conf](upstream.conf)` in this repository to `/etc/nginx/conf.d/upstream.conf`. 
+Copy the contents of the included [upstream.conf](upstream.conf) in this repository to `/etc/nginx/conf.d/upstream.conf`. 
 
 This file defines the various upstream variables for using different versions of PHP. For Magento 2.3, we will use `fastcgi_72` which uses `PHP 7.2`. 
 
