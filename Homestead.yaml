@@ -3,7 +3,7 @@ ip: "192.168.20.10"
 memory: 8192
 cpus: 4
 provider: virtualbox
-name: "homestead-meetup"
+name: "homestead-global"
 
 authorize: ~/.ssh/id_rsa.pub
 
@@ -12,18 +12,19 @@ keys:
 
 folders:
     - map: ~/Sites
-       to: /home/vagrant/sites
-     type: "nfs"
+      to: /home/vagrant/sites
+      type: "nfs"
+      mount_options: ['nolock,vers=3,udp,noatime,actimeo=2']
 
 sites:
     - map: magento2.test
-       to: /home/vagrant/sites/magento2/public_html
+      to: /home/vagrant/sites/magento2/public_html
 
 databases:
     - homestead
 
 ports:
     - send: 8888
-        to: 8888
+      to: 8888
     - send: 35729
-        to: 35729
+      to: 35729
