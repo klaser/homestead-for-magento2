@@ -17,21 +17,25 @@ Visit https://www.virtualbox.org/wiki/Downloads to download the latest version o
 Visit https://www.vagrantup.com/downloads.html to download the latest version of Vagrant. Think of Vagrant as a server that uses VirtualBox as a dependency. Since Vagrant is serving our development sites, it will be necessary to access it using an ssh tunnel. We'll get to that later.
 
 ### 4. Clone the Homestead Repository
-Navigate to `~/Sites` and clone the Homestead repository:
- `git clone https://github.com/laravel/homestead.git ~/Homestead`
+Clone the Homestead repository:
+
+```sh
+git clone https://github.com/laravel/homestead.git ~/Sites/Homestead
+```
 
 The cloned repo will then live in `~/Sites/Homestead` - notice the capitalization of the Homestead folder. Then checkout a tagged version of Homestead so there are no unintended upgrades made.
 
-`cd ~/Homestead`
-
-`git checkout v8.2.0`
+```sh
+cd ~/Sites/Homestead
+git checkout v8.2.0
+```
 
 ### 5. Generate a Homestead.yaml file
-In the homestead directory (`cd ~/Homestead`) run `bash init.sh`
+In the homestead directory (`cd ~/Sites/Homestead`) run `bash init.sh`
 
 Next, customize your `Homestead.yaml` file to meet your requirements. [Here is a sample `Homestead.yaml` file that I use](Homestead.yaml). Let's break down a couple of those configuration options.
 
-```
+```yaml
 folders:
     - map: ~/Sites
       to: /home/vagrant/sites
@@ -39,7 +43,7 @@ folders:
 
 The 'folders' section maps the folder on your Mac which contains your cloned repositories to a folder inside the Vagrant instance. Note that the Vagrant folder name is lower-case.
 
-```
+```yaml
 sites:
     - map: magento2.test
       to: /home/vagrant/sites/magento2/public_html
@@ -48,7 +52,7 @@ sites:
 The 'sites' section maps a domain that you would use in your browser to access your development site to a folder on the Vagrant machine, a.k.a. the server that is serving up your site. It's important to note that due to the `folders` config we set up, `~/Sites` on your Mac is the same thing as `/home/vagrant/sites` in the Vagrant box. `magento2.test` is a new site we're using to prove out these setup steps. When you work on new sites, they would be added to this sites configuration like so:
 
 **e.g.:**
-```
+```yaml
 sites:
     - map: magento2.test
       to: /home/vagrant/sites/magento2/public_html
@@ -96,7 +100,7 @@ Remember the `sites` config from the Homestead.yaml file in Step #5? On your Mac
 
 Create a file named `index.php` with the following contents:
 
-```
+```php
 <?php phpinfo(); ?>
 ```
 
