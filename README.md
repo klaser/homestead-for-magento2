@@ -17,17 +17,21 @@ Visit https://www.virtualbox.org/wiki/Downloads to download the latest version o
 Visit https://www.vagrantup.com/downloads.html to download the latest version of Vagrant. Think of Vagrant as a server that uses VirtualBox as a dependency. Since Vagrant is serving our development sites, it will be necessary to access it using an ssh tunnel. We'll get to that later.
 
 ### 4. Clone the Homestead Repository
-Navigate to `~/Sites` and clone the Homestead repository:
- `git clone https://github.com/laravel/homestead.git ~/Homestead`
+Clone the Homestead repository:
+
+```sh
+git clone https://github.com/laravel/homestead.git ~/Sites/Homestead
+```
 
 The cloned repo will then live in `~/Sites/Homestead` - notice the capitalization of the Homestead folder. Then checkout a tagged version of Homestead so there are no unintended upgrades made.
 
-`cd ~/Homestead`
-
-`git checkout v8.2.0`
+```sh
+cd ~/Sites/Homestead
+git checkout v8.2.0
+```
 
 ### 5. Generate a Homestead.yaml file
-In the homestead directory (`cd ~/Homestead`) run `bash init.sh`
+In the homestead directory (`cd ~/Sites/Homestead`) run `bash init.sh`
 
 Next, customize your `Homestead.yaml` file to meet your requirements. [Here is a sample `Homestead.yaml` file that I use](Homestead.yaml). Let's break down a couple of those configuration options.
 
